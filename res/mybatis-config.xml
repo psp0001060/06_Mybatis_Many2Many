@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="config.properties">
+		<property name="p_driver" value="com.mysql.jdbc.Driver"></property>
+	</properties>
+	<typeAliases>
+		<typeAlias type="test.model.Student" alias="Student" />
+		<typeAlias type="test.model.Course" alias="Course" />
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${p_driver}" />
+				<property name="url" value="jdbc:mysql://127.0.0.1:3306/mybatsis_many2many" />
+				<property name="username" value="${dev_user}" />
+				<property name="password" value="${dev_password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="test/mapping/StudentMapper.xml" />
+		<mapper resource="test/mapping/CourseMapper.xml" />
+	</mappers>
+</configuration>
